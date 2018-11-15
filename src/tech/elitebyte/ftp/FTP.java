@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
+import tech.elitebyte.ftp.Tracks.Citizen.AnvilPerk;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
 
 import java.io.File;
@@ -52,6 +53,9 @@ public final class FTP extends JavaPlugin {
 
                     WandererPerk perk = new WandererPerk("Dicks", p);
                     perk.usePerk();
+
+                    AnvilPerk perk2 = new AnvilPerk("Dicks", p);
+                    perk2.usePerk();
 
                     break;
 

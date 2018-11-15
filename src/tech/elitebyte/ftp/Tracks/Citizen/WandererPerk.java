@@ -17,6 +17,7 @@ public class WandererPerk extends RankPerk {
     public void usePerk() {
         super.usePerk();
 
+
         final Vector direction = p.getEyeLocation().getDirection().multiply(3);
         p.getWorld().spawn(p.getEyeLocation().add(direction.getX(),direction.getY(),direction.getZ()), Fireball.class);
     }
