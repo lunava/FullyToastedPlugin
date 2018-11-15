@@ -38,7 +38,7 @@ public final class FTP extends JavaPlugin implements Listener {
             getConfig().options().copyDefaults(true);
             saveDefaultConfig();
         } else {
-            this.logger.info("[FTP] A config was already made :)");
+            this.logger.info("[FTP] A config was already made :D");
         }
 
         plugin = this;
