@@ -5,5 +5,9 @@ main: tech.elitebyte.ftp.FTP
 author: elitebyte
 
 commands:
-  dick:
-    description: Throw a fireball
+  anvil:
+    description: Rains Anvils
+  fireball:
+    description: Fireball towards
+  explode:
+    description: Fake explode

@@ -1,16 +1,26 @@
 package tech.elitebyte.ftp;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import tech.elitebyte.ftp.Tracks.Citizen.AnvilPerk;
+import tech.elitebyte.ftp.Tracks.Citizen.FakeExplodePerk;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
+import tech.elitebyte.ftp.helpers.ExplosionHandler;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public final class FTP extends JavaPlugin {
+public final class FTP extends JavaPlugin implements Listener {
 
     public final Logger logger = Logger.getLogger("Minecraft");
     public static FTP plugin;
@@ -32,6 +42,9 @@ public final class FTP extends JavaPlugin {
         }
 
         plugin = this;
+        PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(this, this);
+
     }
 
     @Override
@@ -48,15 +61,22 @@ public final class FTP extends JavaPlugin {
             Player p = (Player) sender;
 
             switch (commandSent) {
-                case "dick":
+                case "anvil":
 
-
-                    WandererPerk perk = new WandererPerk("Dicks", p);
-                    perk.usePerk();
 
                     AnvilPerk perk2 = new AnvilPerk("Dicks", p);
                     perk2.usePerk();
 
+                    break;
+
+                case "fireball":
+                    WandererPerk perk = new WandererPerk("Dicks", p);
+                    perk.usePerk();
+                    break;
+
+                case "explode":
+                    FakeExplodePerk perk3 = new FakeExplodePerk("Dicks", p);
+                    perk3.usePerk();
                     break;
 
             }
@@ -64,6 +84,26 @@ public final class FTP extends JavaPlugin {
         }
 
         return false;
+    }
+
+    @SuppressWarnings("deprecation")
+    @EventHandler
+    public void onEntityExplode(EntityExplodeEvent e) {
+        ArrayList<Block> blocks = new ArrayList<>();
+        ArrayList<Block> dontexplode = new ArrayList<>();
+        for (Block b : e.blockList()) {
+            if (b.getType() == Material.WOOL || b.getType() == Material.TORCH ||  b.getType() == Material.GRASS ||  b.getType() == Material.DIRT) {
+                blocks.add(b);
+            } else {
+                dontexplode.add(b);
+            }
+        }
+        for(Block b : dontexplode){
+            e.blockList().remove(b);
+            b.getState().update(true);
+        }e.setYield(0);
+        ExplosionHandler ge = new ExplosionHandler(blocks);
+        Bukkit.getScheduler().runTaskLater(FTP.plugin, ge, 150);
     }
 
 }
