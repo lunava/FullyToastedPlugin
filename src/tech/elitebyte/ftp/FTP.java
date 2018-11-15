@@ -15,6 +15,7 @@ import tech.elitebyte.ftp.Tracks.Citizen.AnvilPerk;
 import tech.elitebyte.ftp.Tracks.Citizen.FakeExplodePerk;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
 import tech.elitebyte.ftp.helpers.ExplosionHandler;
+import tech.elitebyte.ftp.helpers.TimeHandler;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ import java.util.logging.Logger;
 public final class FTP extends JavaPlugin implements Listener {
 
     public final Logger logger = Logger.getLogger("Minecraft");
+    private final TimeHandler timeHandler = new TimeHandler();
     public static FTP plugin;
-
 
 
     @Override
@@ -42,6 +43,7 @@ public final class FTP extends JavaPlugin implements Listener {
         }
 
         plugin = this;
+
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(this, this);
 
@@ -50,6 +52,10 @@ public final class FTP extends JavaPlugin implements Listener {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public TimeHandler getTimeHandler(){
+        return timeHandler;
     }
 
 
@@ -62,16 +68,13 @@ public final class FTP extends JavaPlugin implements Listener {
 
             switch (commandSent) {
                 case "anvil":
-
-
-                    AnvilPerk perk2 = new AnvilPerk("Dicks", p);
-                    perk2.usePerk();
-
+                    AnvilPerk perk = new AnvilPerk("Dicks", p);
+                    perk.usePerk();
                     break;
 
                 case "fireball":
-                    WandererPerk perk = new WandererPerk("Dicks", p);
-                    perk.usePerk();
+                    WandererPerk perk2 = new WandererPerk("Dicks", p, 1000);
+                    perk2.usePerk();
                     break;
 
                 case "explode":

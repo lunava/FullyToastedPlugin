@@ -7,18 +7,12 @@ import tech.elitebyte.ftp.helpers.RankPerk;
 
 public class WandererPerk extends RankPerk {
 
+    void usePerk() {
+        Player p = getPlayer();
 
-
-    public WandererPerk(String rank, Player p) {
-        super(rank, p);
+        final Vector direction = p.getEyeLocation().getDirection();
+        p.getWorld().spawn(p.getEyeLocation().add(direction.getX(), direction.getY(), direction.getZ()), Fireball.class);
     }
 
-    @Override
-    public void usePerk() {
-        super.usePerk();
 
-
-        final Vector direction = p.getEyeLocation().getDirection().multiply(3);
-        p.getWorld().spawn(p.getEyeLocation().add(direction.getX(),direction.getY(),direction.getZ()), Fireball.class);
-    }
 }
