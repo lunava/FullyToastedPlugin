@@ -1,0 +1,9 @@
+name: FT-Plugin
+description: Fully Toasted Custom Plugin
+version: 1.0
+main: tech.elitebyte.ftp.FTP
+author: elitebyte
+
+commands:
+  dick:
+    description: Throw a fireball
