@@ -65,7 +65,5 @@ class Cooldown {
         return false;
     }
 
-
-
 }
 

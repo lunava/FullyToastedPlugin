@@ -1,1 +1,71 @@
-## Ranks Configuration
+
+## Tracks -> Ranks Configuration
+Tracks:
+  Citizenship:
+    Plebeian: 0
+    Wanderer: 30
+    Citizen: 60
+    Adventurer: 30
+    Legend: 30
+    Village Idiot: 30
+  Magic:
+    Acolyte: 30
+    Apprentice: 60
+    Mage: 40
+    Adept: 30
+    Magus: 30
+    Wizard: 60
+    Archmage: 60
+  BloodMagic:
+    Blood Letter: 30
+    Sangainist: 60
+    Blood Leech: 30
+    Blood Lord: 60
+  Thaumaturgy:
+    Golemancer: 60
+    Crimson Preator: 30
+    Void Walker: 60
+    Thaumaturgist: 30
+  Sorcery:
+    Shaman: 30
+    Totem: 60
+    Witch / Warlock: 60
+    Werewolf / Vampire: 60
+  Technology:
+    Laborer: 30
+    Tester: 30
+    Tinkerer: 30
+    Journeyman: 30
+    Mechanic: 30
+    Technician: 60
+    Inventor: 60
+  Machining:
+    Trackman: 30
+    Machinist: 60
+    Millwright: 30
+    Conductor: 60
+  Engineering:
+    Specialist: 30
+    Engineer: 30
+    Roboticist: 30
+    Cosmonaut: 0
+  Science:
+    Professor: 30
+    Physicist / Chemist: 0
+    Networker: 0
+    Mad Scientist: 30
+  Patronage:
+    Knight: 60
+    Baron / Baroness: 60
+    Lord / Lady: 60
+    Prince / Princess: 30
+    President / Prime Minister: 0
+    King / Queen: 0
+    Emperor: 0
+    Notch: 0
+    Demi-God: 0
+    Demon: 0
+    Sphinx: 0
+    Almighty: 0
+    Demon King: 0
+    God / Buddha: 0

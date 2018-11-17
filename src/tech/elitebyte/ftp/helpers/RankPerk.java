@@ -9,15 +9,11 @@ public abstract class RankPerk {
     private String rank;
     private Player p;
 
-
-
     public RankPerk(String rank, Player p, long coolDownTime) {
         this.coolDownTime = coolDownTime;
         this.rank = rank;
         this.p = p;
     }
-
-    abstract void usePerk();
 
     public boolean tryUsingPerk() {
         if (isCooling()) {
@@ -38,4 +34,6 @@ public abstract class RankPerk {
     public Player getPlayer() {
         return p;
     }
+
+    abstract void usePerk();
 }

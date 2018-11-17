@@ -7,12 +7,15 @@ import tech.elitebyte.ftp.helpers.RankPerk;
 
 public class WandererPerk extends RankPerk {
 
+    public WandererPerk(String rank, Player p, long coolDownTime) {
+        super(rank, p, coolDownTime);
+    }
+
     void usePerk() {
         Player p = getPlayer();
 
         final Vector direction = p.getEyeLocation().getDirection();
         p.getWorld().spawn(p.getEyeLocation().add(direction.getX(), direction.getY(), direction.getZ()), Fireball.class);
     }
-
 
 }
