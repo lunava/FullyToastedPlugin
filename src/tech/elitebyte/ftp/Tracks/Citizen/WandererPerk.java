@@ -11,7 +11,8 @@ public class WandererPerk extends RankPerk {
         super(rank, p, coolDownTime);
     }
 
-    void usePerk() {
+
+    public void usePerk() {
         Player p = getPlayer();
 
         final Vector direction = p.getEyeLocation().getDirection();

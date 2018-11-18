@@ -35,5 +35,5 @@ public abstract class RankPerk {
         return p;
     }
 
-    abstract void usePerk();
+    public abstract void usePerk();
 }

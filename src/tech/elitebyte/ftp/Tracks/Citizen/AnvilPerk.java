@@ -19,15 +19,14 @@ import tech.elitebyte.ftp.helpers.RankPerk;
 
 public class AnvilPerk extends RankPerk {
 
-    public AnvilPerk(String rank, Player p) {
-        super(rank, p);
+    public AnvilPerk(String rank, Player p, long coolDown) {
+        super(rank, p, coolDown);
     }
 
     @Override
     public void usePerk() {
-        super.usePerk();
 
-        List<Entity> nearbyE = p.getNearbyEntities(20, 20, 20);
+        List<Entity> nearbyE = getPlayer().getNearbyEntities(20, 20, 20);
         ArrayList<LivingEntity> livingE = new ArrayList<LivingEntity>();
 
         for (Entity e : nearbyE) {
