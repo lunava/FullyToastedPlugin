@@ -1,12 +1,10 @@
 package tech.elitebyte.ftp;
 
 import java.sql.Array;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Logger;
 
+import com.sun.deploy.util.ReflectionUtil;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,10 +38,13 @@ public final class FTP extends JavaPlugin {
         // Initiate Config File
         configHandler.initiateConfig();
 
-        ArrayList<LinkedHashMap<String, ArrayList>> arrayList = configHandler.fetchCfgTracks();
+        //ArrayList<LinkedHashMap<String, ArrayList<LinkedHashMap<String, Integer>>>> arrayList = (ArrayList) configHandler.fetchCfgTracks();
 
+        LinkedHashMap hash = (LinkedHashMap) configHandler.fetchCfgTracks();
 
-        logger.info("Value Thing: "+ arrayList.get(0).get("Citizenship").get(0));
+        logger.info("Class Thing: "+ hash);
+        logger.info("Value Thing: "+ hash.getClass());
+
 
 
         //logger.info(configHandler.fetchCfgTracks().toArray().toString());
