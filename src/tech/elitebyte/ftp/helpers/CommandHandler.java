@@ -26,17 +26,17 @@ public class CommandHandler implements CommandExecutor {
 
             switch (commandSent) {
                 case "anvil":
-                    AnvilPerk perk = new AnvilPerk("Dicks", p, 1000);
+                    AnvilPerk perk = new AnvilPerk("Wanderer", p);
                     perk.usePerk();
                     break;
 
                 case "fireball":
-                    WandererPerk perk2 = new WandererPerk("Dicks", p, 1000);
+                    WandererPerk perk2 = new WandererPerk("Dicks", p);
                     perk2.usePerk();
                     break;
 
                 case "explode":
-                    FakeExplodePerk perk3 = new FakeExplodePerk("Dicks", p, 1000);
+                    FakeExplodePerk perk3 = new FakeExplodePerk("Dicks", p);
                     perk3.usePerk();
                     break;
 

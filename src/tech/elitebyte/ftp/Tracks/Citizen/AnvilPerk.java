@@ -1,26 +1,26 @@
 package tech.elitebyte.ftp.Tracks.Citizen;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import tech.elitebyte.ftp.FTP;
 import tech.elitebyte.ftp.helpers.RankPerk;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class AnvilPerk extends RankPerk {
 
-    public AnvilPerk(String rank, Player p, long coolDown) {
-        super(rank, p, coolDown);
+    public AnvilPerk(String rank, Player p) {
+        super(rank, p);
     }
 
     @Override
@@ -72,10 +72,7 @@ public class AnvilPerk extends RankPerk {
     private boolean checkBlock(int x , int y , int z, World world) {
         Block block = world.getBlockAt(x,y,z);
 
-        if (block.getTypeId() == 0) {
-            return true;
-        }
-        return false;
+        return block.getTypeId() == 0;
     }
 }
 

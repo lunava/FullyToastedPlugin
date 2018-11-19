@@ -1,17 +1,13 @@
 package tech.elitebyte.ftp;
 
-import java.sql.Array;
-import java.util.*;
-import java.util.logging.Logger;
-
-import com.sun.deploy.util.ReflectionUtil;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import tech.elitebyte.ftp.helpers.CommandHandler;
 import tech.elitebyte.ftp.helpers.ConfigHandler;
 import tech.elitebyte.ftp.helpers.EventHandler;
 import tech.elitebyte.ftp.helpers.TimeHandler;
+
+import java.util.logging.Logger;
 
 
 public final class FTP extends JavaPlugin {
@@ -37,17 +33,6 @@ public final class FTP extends JavaPlugin {
 
         // Initiate Config File
         configHandler.initiateConfig();
-
-        //ArrayList<LinkedHashMap<String, ArrayList<LinkedHashMap<String, Integer>>>> arrayList = (ArrayList) configHandler.fetchCfgTracks();
-
-        LinkedHashMap hash = (LinkedHashMap) configHandler.fetchCfgTracks();
-
-        logger.info("Class Thing: "+ hash);
-        logger.info("Value Thing: "+ hash.getClass());
-
-
-
-        //logger.info(configHandler.fetchCfgTracks().toArray().toString());
 
         // Event Registration
         pm.registerEvents(eventHandler, this);

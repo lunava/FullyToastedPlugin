@@ -9,8 +9,8 @@ public abstract class RankPerk {
     private String rank;
     private Player p;
 
-    public RankPerk(String rank, Player p, long coolDownTime) {
-        this.coolDownTime = coolDownTime;
+    public RankPerk(String rank, Player p) {
+        this.coolDownTime = (long) (60000 * (int) FTP.plugin.getConfigHandler().fetchCfgValue(rank));
         this.rank = rank;
         this.p = p;
     }

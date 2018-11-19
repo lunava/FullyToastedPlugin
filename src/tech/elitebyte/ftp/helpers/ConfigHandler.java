@@ -3,7 +3,6 @@ package tech.elitebyte.ftp.helpers;
 import org.bukkit.plugin.Plugin;
 
 import java.io.File;
-import java.util.*;
 
 public class ConfigHandler {
 
@@ -16,7 +15,7 @@ public class ConfigHandler {
     public void initiateConfig() {
         File configFile = new File(plugin.getDataFolder(), "config.yml");
         if (!(configFile.exists())) {
-            plugin.getLogger().info("[FTP] Config Created");
+            plugin.getLogger().info("[FTP] Loading config.yml file.");
             plugin.getConfig().options().copyDefaults(true);
             plugin.saveDefaultConfig();
         } else {
@@ -24,10 +23,10 @@ public class ConfigHandler {
         }
     }
 
-    public HashMap fetchCfgTracks() {
-        HashMap arr = (HashMap) plugin.getConfig().get("Tracks", new HashMap<>());
+    public Object fetchCfgValue(String path) {
+        Object value = plugin.getConfig().get(path);
 
-        return arr;
+        return value;
     }
 
 }

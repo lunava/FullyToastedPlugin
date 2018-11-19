@@ -1,22 +1,23 @@
 package tech.elitebyte.ftp.Tracks.Citizen;
 
-import org.bukkit.entity.Fireball;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
+import org.bukkit.inventory.ItemStack;
 import tech.elitebyte.ftp.helpers.RankPerk;
 
 public class WandererPerk extends RankPerk {
 
-    public WandererPerk(String rank, Player p, long coolDownTime) {
-        super(rank, p, coolDownTime);
+    public WandererPerk(String rank, Player p) {
+        super(rank, p);
     }
 
 
     public void usePerk() {
         Player p = getPlayer();
 
-        final Vector direction = p.getEyeLocation().getDirection();
-        p.getWorld().spawn(p.getEyeLocation().add(direction.getX(), direction.getY(), direction.getZ()), Fireball.class);
+        ItemStack itemStack = new ItemStack(Material.FIREWORK);
+        itemStack.setAmount(16);
+        p.getInventory().addItem(itemStack);
     }
 
 }
