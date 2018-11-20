@@ -24,7 +24,7 @@ public class AnvilPerk extends RankPerk {
     }
 
     @Override
-    public void usePerk() {
+    public boolean usePerk() {
 
         List<Entity> nearbyE = getPlayer().getNearbyEntities(20, 20, 20);
         ArrayList<LivingEntity> livingE = new ArrayList<LivingEntity>();
@@ -66,6 +66,7 @@ public class AnvilPerk extends RankPerk {
                 }
             }, 40);
         }
+        return true;
     }
 
     @SuppressWarnings("deprecation")

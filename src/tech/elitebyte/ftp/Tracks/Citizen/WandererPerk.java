@@ -12,12 +12,13 @@ public class WandererPerk extends RankPerk {
     }
 
 
-    public void usePerk() {
+    public boolean usePerk() {
         Player p = getPlayer();
 
         ItemStack itemStack = new ItemStack(Material.FIREWORK);
         itemStack.setAmount(16);
         p.getInventory().addItem(itemStack);
+        return true;
     }
 
 }

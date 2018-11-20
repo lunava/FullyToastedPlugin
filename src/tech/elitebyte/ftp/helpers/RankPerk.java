@@ -1,5 +1,6 @@
 package tech.elitebyte.ftp.helpers;
 
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import tech.elitebyte.ftp.FTP;
 
@@ -15,16 +16,24 @@ public abstract class RankPerk {
         this.p = p;
     }
 
+    public abstract boolean usePerk();
+
     public boolean tryUsingPerk() {
-        if (isCooling()) {
-            return false;
+        long timeTilCool = timeTilCool();
+
+        if (timeTilCool <= 0) {
+            if (usePerk()) {
+                storeCoolDown();
+                return true;
+            }
         }
-        usePerk();
-        return true;
+        FTP.plugin.getServer().broadcastMessage(ChatColor.WHITE + "" + ChatColor.BOLD
+                 + "[FTP]" + ChatColor.RED + " Perk is still cooling... will be cooled in " + timeTilCool/60000 + " minutes.");
+        return false;
     }
 
-    public boolean isCooling() {
-       return FTP.plugin.getTimeHandler().isPlayerCooling(p.getDisplayName(), rank);
+    public long timeTilCool() {
+       return FTP.plugin.getTimeHandler().timeTilCool(p.getDisplayName(), rank);
     }
 
     public void storeCoolDown() {
@@ -35,5 +44,5 @@ public abstract class RankPerk {
         return p;
     }
 
-    public abstract void usePerk();
+
 }

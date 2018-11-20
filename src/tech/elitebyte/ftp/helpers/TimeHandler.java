@@ -1,6 +1,9 @@
 package tech.elitebyte.ftp.helpers;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class TimeHandler {
 
@@ -10,7 +13,7 @@ public class TimeHandler {
         return playerCoolDowns;
     }
 
-    public void addPlayerCooldown(String playerName, String rankPerk, long cooldownTime) {
+    public void addPlayerCooldown(String rankPerk, String playerName, long cooldownTime) {
 
         long currentTime = System.currentTimeMillis();
         Cooldown cooldown = new Cooldown(rankPerk, currentTime+cooldownTime);
@@ -21,23 +24,25 @@ public class TimeHandler {
             this.playerCoolDowns.put(playerName, playerCoolDowns);
         } else {
             Set<Cooldown> cooldowns = new LinkedHashSet<>();
+            cooldowns.add(cooldown);
             this.playerCoolDowns.put(playerName, cooldowns);
         }
     }
 
-    public boolean isPlayerCooling(String playerName, String rankPerk) {
+    public long timeTilCool(String playerName, String rankPerk) {
         Set<Cooldown> cooldowns = playerCoolDowns.get(playerName);
-        for (Cooldown cooldown : cooldowns) {
-            if (cooldown.getRankPerk().equals(rankPerk)) {
-                if (cooldown.hasCooled()) {
-                    return false;
-                } else {
-                    return true;
+
+        if (cooldowns != null) {
+            if (!cooldowns.isEmpty()) {
+                for (Cooldown cooldown : cooldowns) {
+                    if (cooldown.getRankPerk() == rankPerk) {
+                        return cooldown.timeTilCool();
+                    }
                 }
             }
         }
-        return false;
-    }
+        return 0;
+        }
 
     // End of Class
 }
@@ -57,12 +62,8 @@ class Cooldown {
         return rankPerk;
     }
 
-    public boolean hasCooled() {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - endTime > 0) {
-            return true;
-        }
-        return false;
+    public long timeTilCool() {
+        return endTime - System.currentTimeMillis();
     }
 
 }

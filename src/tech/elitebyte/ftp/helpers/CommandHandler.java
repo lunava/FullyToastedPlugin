@@ -5,7 +5,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
-import tech.elitebyte.ftp.Tracks.Citizen.AnvilPerk;
 import tech.elitebyte.ftp.Tracks.Citizen.FakeExplodePerk;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
 
@@ -26,8 +25,8 @@ public class CommandHandler implements CommandExecutor {
 
             switch (commandSent) {
                 case "anvil":
-                    AnvilPerk perk = new AnvilPerk("Wanderer", p);
-                    perk.usePerk();
+                    WandererPerk perk = new WandererPerk("Wanderer", p);
+                    perk.tryUsingPerk();
                     break;
 
                 case "fireball":
@@ -42,6 +41,8 @@ public class CommandHandler implements CommandExecutor {
 
             }
             return true;
+        } else {
+            sender.sendMessage("[FTP] Command '" + commandSent + "' is a player-only command.");
         }
 
         return false;
