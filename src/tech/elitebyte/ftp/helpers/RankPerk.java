@@ -22,10 +22,18 @@ public abstract class RankPerk {
     // Local Variables
     private long coolDownTime;
     private String rank;
+    private Long totalDuration;
     private Player p;
 
     public RankPerk(String rank, Player p) {
         this.coolDownTime = (long) (60000 * (int) FTP.plugin.getConfigHandler().fetchCfgValue(rank));
+        this.rank = rank;
+        this.p = p;
+    }
+
+    public RankPerk(String rank, Player p, long totalDuration) {
+        this.coolDownTime = (long) (60000 * (int) FTP.plugin.getConfigHandler().fetchCfgValue(rank));
+        this.totalDuration = totalDuration;
         this.rank = rank;
         this.p = p;
     }
@@ -77,5 +85,23 @@ public abstract class RankPerk {
         return p;
     }
 
+    public String getRankPerkName() {
+        return rank;
+    }
+
+    public long getTotalDuration() {
+        if (totalDuration != null) {
+            return totalDuration;
+        }
+        return 0;
+    }
+
+    // TODO: Make this actually work.
+    public long getCurrentDuration() {
+        if (totalDuration != null) {
+            return totalDuration;
+        }
+        return 0;
+    }
 
 }

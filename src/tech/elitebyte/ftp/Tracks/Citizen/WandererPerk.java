@@ -16,7 +16,6 @@ public class WandererPerk extends RankPerk {
         super(rank, p);
     }
 
-
     public boolean usePerk() {
         Player p = getPlayer();
 

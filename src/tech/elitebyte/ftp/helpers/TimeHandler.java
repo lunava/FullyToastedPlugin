@@ -80,10 +80,18 @@ class Cooldown {
 
     private final long endTime;
     private final String rankPerk;
+    // Very Unfinished
+    private long endDuration;
 
     public Cooldown(String rankPerk, long endTime) {
         this.endTime = endTime;
         this.rankPerk = rankPerk;
+    }
+
+    public Cooldown(String rankPerk, long endTime, long duration) {
+        this.endTime = endTime;
+        this.rankPerk = rankPerk;
+        this.endDuration = endDuration;
     }
 
     public String getRankPerk() {

@@ -7,7 +7,7 @@ author: elitebyte
 commands:
   wanderer:
     description: Runs the wanderer rank perk.
-  fireball:
-    description: Fireball towards
+  bloodletter:
+    description: Runs the bloodletter rank perk.
   explode:
     description: Fake explode

@@ -3,11 +3,17 @@ package tech.elitebyte.ftp.helpers;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -22,10 +28,53 @@ import java.util.ArrayList;
 public class EventHandler implements Listener {
 
     private Plugin plugin;
+    public Map<Player, RankPerk> eventAffiliatedRankPerks = new HashMap<>();
 
     public EventHandler(Plugin plugin) {
         this.plugin = plugin;
     }
+
+    // Very Unfinished
+    @org.bukkit.event.EventHandler
+    public void onEntityDamage(EntityDamageByEntityEvent e) {
+        Entity damager = e.getDamager();
+        Entity damageTaker = e.getEntity();
+        double damage;
+
+        if (damager instanceof Player) {
+            Player p = (Player) damager;
+            //Damage Causer is the player that did the command
+
+            if (e.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_ATTACK)) {
+
+                //Damage was done by attack (I think ENTITY_ATTACK is a punch)
+                if (p.getItemInHand().getType().equals(Material.AIR)) {
+
+                    damage = e.getDamage();
+                    //Keep track of damage so I can add it back
+                    for (Player rankPerkPlayer : eventAffiliatedRankPerks.keySet()) {
+
+                        if (rankPerkPlayer.equals(p)) {
+
+                            RankPerk genericRP = eventAffiliatedRankPerks.get(rankPerkPlayer);
+                            if (genericRP.getRankPerkName().equals("BloodLetter")) {
+
+                                //if (genericRP.getCurrentDuration() > 0) {
+                                    if (p.getHealth()+damage*2 < 20) {
+                                        p.setHealth(p.getHealth()+damage*2);
+                                    } else {
+                                        p.setHealth(20);
+                                    }
+
+                                //}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 
     /**
      * This is method will be used to handle a specific implementation of the FakeExplode Perk,
@@ -38,7 +87,6 @@ public class EventHandler implements Listener {
      *          on the event such as blocks or entities affected.
      * @see ExplosionHandler
      */
-
     @SuppressWarnings("deprecation")
     @org.bukkit.event.EventHandler
     public void onEntityExplode(EntityExplodeEvent e) {
@@ -58,5 +106,6 @@ public class EventHandler implements Listener {
         ExplosionHandler explosionHandler = new ExplosionHandler(blocks);
         Bukkit.getScheduler().runTaskLater(plugin, explosionHandler, 150);
     }
+
 
 }

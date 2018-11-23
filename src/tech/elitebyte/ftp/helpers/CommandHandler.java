@@ -6,6 +6,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
+import tech.elitebyte.ftp.Tracks.Magic.BloodLetter;
 
 
 /**
@@ -53,7 +54,9 @@ public class CommandHandler implements CommandExecutor {
                     perk.tryUsingPerk();
                     break;
 
-                case "fireball":
+                case "bloodletter":
+                    BloodLetter bloodLetterPerk = new BloodLetter("BloodLetter", p, 1, 100);
+                    bloodLetterPerk.tryUsingPerk();
                     break;
 
                 case "explode":

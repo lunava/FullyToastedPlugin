@@ -55,8 +55,8 @@ public final class FTP extends JavaPlugin {
         pm.registerEvents(eventHandler, this);
 
         // Command Registration
-        getCommand("anvil").setExecutor(commandHandler);
-        getCommand("fireball").setExecutor(commandHandler);
+        getCommand("wanderer").setExecutor(commandHandler);
+        getCommand("bloodletter").setExecutor(commandHandler);
         getCommand("explode").setExecutor(commandHandler);
 
         logger.info("[FTP] The plugin has successfully initialized.");
