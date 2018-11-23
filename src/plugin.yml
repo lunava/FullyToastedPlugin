@@ -5,8 +5,8 @@ main: tech.elitebyte.ftp.FTP
 author: elitebyte
 
 commands:
-  anvil:
-    description: Rains Anvils
+  wanderer:
+    description: Runs the wanderer rank perk.
   fireball:
     description: Fireball towards
   explode:

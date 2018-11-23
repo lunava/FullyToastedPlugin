@@ -6,10 +6,19 @@ import org.bukkit.block.Block;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.Plugin;
-import tech.elitebyte.ftp.FTP;
 
 import java.util.ArrayList;
 
+
+/**
+ * This is the event handler which implements the Bukkit Listener Interface
+ * Use this class to listen to any events which might action might be needed to take,
+ * but note that every listener tacks on more checks that the server needs to run so keep
+ * the method implementation as optimized as possible.
+ *
+ * @see Listener
+ * @author EliteByte
+ */
 public class EventHandler implements Listener {
 
     private Plugin plugin;
@@ -17,6 +26,18 @@ public class EventHandler implements Listener {
     public EventHandler(Plugin plugin) {
         this.plugin = plugin;
     }
+
+    /**
+     * This is method will be used to handle a specific implementation of the FakeExplode Perk,
+     * which is still in the works. But essentially makes it so that ever block that blows up
+     * regenerates back to it's original state as well as whitelist only certain blocks of blowing up.
+     *
+     * The ExplosionHandler Class handles the regeneration process.
+     *
+     * @param e EntityExplodeEvent is the object passed through which contains information
+     *          on the event such as blocks or entities affected.
+     * @see ExplosionHandler
+     */
 
     @SuppressWarnings("deprecation")
     @org.bukkit.event.EventHandler
@@ -35,7 +56,7 @@ public class EventHandler implements Listener {
             b.getState().update(true);
         } e.setYield(0);
         ExplosionHandler explosionHandler = new ExplosionHandler(blocks);
-        Bukkit.getScheduler().runTaskLater(FTP.plugin, explosionHandler, 150);
+        Bukkit.getScheduler().runTaskLater(plugin, explosionHandler, 150);
     }
 
 }
