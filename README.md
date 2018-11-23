@@ -3,7 +3,7 @@
 # Collaboration Instructions
 1. Set yourself up on you're favorite IDE (I'm using IntelliJ IDEA for this instance)
 2. Clone the project onto your system, and add thermos-server.jar build 65 to your dependencies.
-3. [IMPORTANT] Fix your 'ignore files' in order to only push source files/folders. i.e. .idea files, META-INF files.. etc.
+3. [IMPORTANT] Fix your 'ignore files' in order to only push source files/folders. i.e. exclude .idea files, META-INF files.. etc.
 
 # How to add a RankPerk
 1. Update the config.yml file to reflect the correct cool down time as well as name
