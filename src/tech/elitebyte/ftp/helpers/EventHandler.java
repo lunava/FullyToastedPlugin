@@ -92,20 +92,43 @@ public class EventHandler implements Listener {
     public void onEntityExplode(EntityExplodeEvent e) {
         ArrayList<Block> blocks = new ArrayList<>();
         ArrayList<Block> dontexplode = new ArrayList<>();
-        for (Block b : e.blockList()) {
-            if (b.getType() == Material.WOOL || b.getType() == Material.TORCH ||  b.getType() == Material.GRASS ||  b.getType() == Material.DIRT) {
-                blocks.add(b);
-            } else {
-                dontexplode.add(b);
+
+
+
+
+
+            for (Block b : e.blockList()) {
+                if (b.getType() == Material.WOOL || b.getType() == Material.TORCH || b.getType() == Material.GRASS || b.getType() == Material.DIRT) {
+                    blocks.add(b);
+                } else {
+                    dontexplode.add(b);
+                }
             }
+            for (Block b : dontexplode) {
+                e.blockList().remove(b);
+                b.getState().update(true);
+            }
+            e.setYield(0);
+            ExplosionHandler explosionHandler = new ExplosionHandler(blocks);
+            Bukkit.getScheduler().runTaskLater(plugin, explosionHandler, 150);
         }
-        for(Block b : dontexplode){
-            e.blockList().remove(b);
-            b.getState().update(true);
-        } e.setYield(0);
-        ExplosionHandler explosionHandler = new ExplosionHandler(blocks);
-        Bukkit.getScheduler().runTaskLater(plugin, explosionHandler, 150);
-    }
+
+
+
+    //Under Test
+    @org.bukkit.event.EventHandler
+    public void explosionDamage(EntityDamageEvent explosionEvent){
+        if( explosionEvent.getEntity() instanceof Player){
+           if(explosionEvent.getCause().equals(EntityDamageEvent.DamageCause.ENTITY_EXPLOSION)){
+               explosionEvent.setCancelled(true);
+           }
+        }
+        }
+
 
 
 }
+
+
+
+

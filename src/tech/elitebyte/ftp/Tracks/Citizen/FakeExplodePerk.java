@@ -13,6 +13,7 @@ public class FakeExplodePerk extends RankPerk implements Listener {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean usePerk() {
         final Player p = getPlayer();
         p.getWorld().createExplosion(p.getTargetBlock(null, 250).getX(), p.getTargetBlock(null, 250).getY() + 1, p.getTargetBlock(null, 250).getZ(), 2, false, true);

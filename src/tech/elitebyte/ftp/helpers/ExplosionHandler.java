@@ -1,5 +1,6 @@
 package tech.elitebyte.ftp.helpers;
  
+import java.lang.management.PlatformLoggingMXBean;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -7,7 +8,10 @@ import java.util.Random;
 import org.bukkit.Bukkit;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import tech.elitebyte.ftp.FTP;
 
@@ -31,9 +35,11 @@ public class ExplosionHandler extends BukkitRunnable implements Listener{
     @Override
     public void run() {
         regen();
+
     }
  
     public void regen(){
+
         for(final BlockState state : states){
             Bukkit.getScheduler().runTaskLater(FTP.plugin, new Runnable() {
  
@@ -44,6 +50,9 @@ public class ExplosionHandler extends BukkitRunnable implements Listener{
             }, new Random().nextInt(10*20) + 20);
         }
     }
+
+
+
 
 
 

@@ -11,3 +11,11 @@ commands:
     description: Runs the bloodletter rank perk.
   explode:
     description: Fake explode
+  apprentice:
+    description: Runs the apprentice rank perk.
+  mage:
+    description: Runs the mage rank perk.
+  magus:
+    description: Runs the magus rank perk.
+  acolyte:
+    description: Runs the acolyte rank perk.

@@ -2,10 +2,7 @@ package tech.elitebyte.ftp;
 
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import tech.elitebyte.ftp.helpers.CommandHandler;
-import tech.elitebyte.ftp.helpers.ConfigHandler;
-import tech.elitebyte.ftp.helpers.EventHandler;
-import tech.elitebyte.ftp.helpers.TimeHandler;
+import tech.elitebyte.ftp.helpers.*;
 
 import java.util.logging.Logger;
 
@@ -57,6 +54,10 @@ public final class FTP extends JavaPlugin {
         // Command Registration
         getCommand("wanderer").setExecutor(commandHandler);
         getCommand("bloodletter").setExecutor(commandHandler);
+        getCommand("mage").setExecutor(commandHandler);
+        getCommand("magus").setExecutor(commandHandler);
+        getCommand("apprentice").setExecutor(commandHandler);
+        getCommand("acolyte").setExecutor(commandHandler);
         getCommand("explode").setExecutor(commandHandler);
 
         logger.info("[FTP] The plugin has successfully initialized.");

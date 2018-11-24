@@ -6,7 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import tech.elitebyte.ftp.Tracks.Citizen.WandererPerk;
-import tech.elitebyte.ftp.Tracks.Magic.BloodLetter;
+import tech.elitebyte.ftp.Tracks.Magic.AcolytePerk;
+import tech.elitebyte.ftp.Tracks.Magic.ApprenticePerk;
+import tech.elitebyte.ftp.Tracks.Magic.MagePerk;
+import tech.elitebyte.ftp.Tracks.Magic.MagusPerk;
+//import tech.elitebyte.ftp.Tracks.Magic.BloodLetter;
 
 
 /**
@@ -54,12 +58,26 @@ public class CommandHandler implements CommandExecutor {
                     perk.tryUsingPerk();
                     break;
 
-                case "bloodletter":
-                    BloodLetter bloodLetterPerk = new BloodLetter("BloodLetter", p, 1, 100);
-                    bloodLetterPerk.tryUsingPerk();
-                    break;
+//                case "bloodletter":
+//                    BloodLetter bloodLetterPerk = new BloodLetter("BloodLetter", p, 1, 100);
+//                    bloodLetterPerk.tryUsingPerk();
+//                    break;
 
-                case "explode":
+                case "acolyte":
+                    AcolytePerk acolytePerk = new AcolytePerk("Acolyte", p);
+                    acolytePerk.tryUsingPerk();
+                    break;
+                case "apprentice":
+                    ApprenticePerk apprenticePerk = new ApprenticePerk("Apprentice", p);
+                    apprenticePerk.tryUsingPerk();
+                    break;
+                case "mage":
+                    MagePerk magePerk = new MagePerk("Mage", p);
+                    magePerk.tryUsingPerk();
+                    break;
+                case "magus":
+                    MagusPerk magusPerk = new MagusPerk("Magus", p);
+                    magusPerk.tryUsingPerk();
                     break;
 
             }
