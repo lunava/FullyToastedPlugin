@@ -1,10 +1,11 @@
 package tech.elitebyte.ftp.Tracks.Magic;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Effect;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.util.Vector;
 import tech.elitebyte.ftp.helpers.RankPerk;
+
 
 public class MagePerk extends RankPerk{
     public MagePerk(String rank, Player p){
@@ -17,10 +18,18 @@ public class MagePerk extends RankPerk{
 
 //Working on projecting the particles
         Player p = getPlayer();
-        Location playerEyeLocation = p.getEyeLocation();
-        p.playEffect(playerEyeLocation,Effect.ENDER_SIGNAL, 200);
+        Location playerLocation = p.getLocation();
+        Vector vector = playerLocation.getDirection().normalize();
+        double t = 0;
+        t += 0.5;
 
+        double x = vector.getX() * t ;
+        double y = vector.getY() * t;
+        double z = vector.getBlockZ() * t ;
+
+        p.playEffect(playerLocation,Effect.FLAME, 200);
         p.getServer().broadcastMessage(ChatColor.GREEN + "You issue command: Fire!" );
+
 
 
 
